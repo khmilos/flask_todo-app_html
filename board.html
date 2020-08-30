@@ -50,27 +50,27 @@
       <button class="filter-btn js-filter-boards-btn">Filter</button>
 
       <div class="wrapper">
-        <div href="./card.html" class="board-card">
+        <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
-          <h2 class="board-card__title">Working Tasks 1</h2>
+          <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks 1</h2></a>
           <button class="board-card__btn js-setup-boards-btn">
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
           </button>
         </div>
-        <div href="./card.html" class="board-card">
+        <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
-          <h2 class="board-card__title">Working Tasks 2</h2>
+          <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks </h2></a>
           <button class="board-card__btn js-setup-boards-btn">
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
           </button>
         </div>
-        <div href="./card.html" class="board-card">
+        <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
-          <h2 class="board-card__title">Working Tasks 3</h2>
+          <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks 3</h2></a>
           <button class="board-card__btn js-setup-boards-btn">
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
@@ -98,8 +98,9 @@
               type="radio" 
               name="allowed_boards" 
               id="any" 
-              class="filter__radio">
-            <label for="any" class="filter__label">Any</label>
+              class="filter__radio" 
+              checked />
+            <label for="any" class="filter__label">All</label>
           </li>
         </ul>
         <button class="filter__submit">Submit</button>
@@ -111,8 +112,16 @@
     <div class="modal-container">
       <form class="setup js-setup-boards">
         <h2 class="setup__title">Setup</h2>
-
-        <button class="setup__delete">Exit & Delete</button>
+        <div class="setup__field">
+          <label for="name" class="setup__label">Name</label>
+          <input type="text" name="name" id="name" class="setup__name js-setup-name" />
+        </div>
+        <div class="setup__field">
+          <button class="setup__submit">Submit</button>
+        </div>
+        <div class="setup__field">
+          <button class="setup__delete">Exit & Delete</button>
+        </div>
         <button class="modal-container__close js-setup-boards-close"></button>
       </form>
     </div>

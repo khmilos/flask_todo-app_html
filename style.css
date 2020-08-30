@@ -6,6 +6,7 @@
 
   --bg-pr: #F6FFF8; /* Primary background color */
   --bg-sc: #A4C3B2; /* Secondary background color */
+  --bg-dg: #FFA0A0; /* Danger background color */
   
   --bs-pr: 0px 0px 5px 1px rgba(0, 0, 0, 0.15); /* Primary shadow */
 
@@ -432,13 +433,53 @@ input[type = 'radio'] {
   font-size: var(--fs-lg);
 }
 
+.setup__field {
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.setup_field:last-of-type {
+  margin-bottom: 0;
+}
+
+.setup__label {
+  margin-bottom: 10px;
+  color: var(--fc-sc);
+  font-size: var(--fs-md);
+}
+
+.setup__name {
+  position: relative;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: var(--bb-pr);
+  color: var(--fc-pr);
+  font-size: var(--fs-md);
+}
+
+.setup__submit {
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  padding: 0 15px;
+  width: 100%;
+  height: 40px;
+  background: var(--bg-pr);
+  border-radius: 8px;
+  box-shadow: var(--bs-pr);
+  color: var(--fc-sc);
+  font-size: var(--fs-sm);
+}
+
 .setup__delete {
   justify-content: center;
   align-items: center;
   align-self: flex-end;
   padding: 0 15px;
+  width: 100%;
   height: 40px;
-  background: var(--bg-pr);
+  background: var(--bg-dg);
   border-radius: 8px;
   box-shadow: var(--bs-pr);
   color: var(--fc-sc);

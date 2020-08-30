@@ -24,12 +24,26 @@
         isOpen: false,
         isAnimated: false,
       };
+
+      this.lastEventTarget = null;
+      this.listener = function() {};
     }
-  
-    async open() {
+
+    set isOpen(value) {
+      this.status.isOpen = value;
+      this.listener(value);
+    }
+
+    registerListener(listener) {
+      this.listener = listener;
+    }
+    
+    async open(target) {
       if (this.status.isAnimated || this.status.isOpen) return this;
+      this.lastEventTarget = target;
       this.status.isAnimated = true;
-  
+      this.isOpen = true;
+
       this.container.parentNode.classList.add('forward');
       this.body.classList.add('body-fixed');
       this.body.appendChild(shadow);
@@ -38,23 +52,23 @@
       this.shadow.classList.add('active');
       await sleep(this.time);
   
-      this.status.isOpen = true;
       this.status.isAnimated = false;
       return this;
     }
   
-    async close() {
+    async close(target) {
       if (this.status.isAnimated || !this.status.isOpen) return this;
+      this.lastEventTarget = target;
       this.status.isAnimated = true;
-  
+      this.isOpen = false;
+
       this.shadow.classList.remove('active');
       this.container.parentNode.classList.remove('active');
       await sleep(this.time);
       this.container.parentNode.classList.remove('forward');
       this.body.removeChild(this.shadow);
       this.body.classList.remove('body-fixed');
-  
-      this.status.isOpen = false;
+
       this.status.isAnimated = false;
       return this;
     }
@@ -74,6 +88,7 @@
 
     async open() {
       if (this.status.isAnimated || this.status.isOpen) return this;
+      this.isOpen = true;
       this.status.isAnimated = true;
 
       this.body.classList.add('body-fixed');
@@ -89,13 +104,13 @@
       this.shadow.classList.add('active');
       await sleep(ANIMATION_TIME);
 
-      this.status.isOpen = true;
       this.status.isAnimated = false;
       return this;
     }
 
     async close() {
       if (this.status.isAnimated || !this.status.isOpen) return false;
+      this.isOpen = false;
       this.status.isAnimated = this;
   
       this.burger.classList.remove('active');
@@ -107,7 +122,6 @@
       this.container.classList.remove('forward');
       this.body.classList.remove('body-fixed');
   
-      this.status.isOpen = false;
       this.status.isAnimated = false;
       return this;
     }
@@ -122,14 +136,14 @@
         group.forEach((element) => {
           element.addEventListener('click', (e) => {
             e.preventDefault();
-            action[index].call(modal);
+            action[index].call(modal, element);
           });
         });
       });
       window.addEventListener('click', (event) => {
         if (event.target === modal.container.parentNode
           || event.target === shadow) {
-            modal.close();
+            modal.close(window);
           }
       });
       return modal;
@@ -206,4 +220,11 @@
     },
   );
 
+  setupBoard.registerListener(function(value) {
+    if (value) {
+      const title = this.lastEventTarget.parentNode
+        .querySelector('.js-board-card-title').textContent;
+      document.querySelector('.js-setup-name').value = title;
+    }
+  });
 })()
