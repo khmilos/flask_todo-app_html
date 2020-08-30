@@ -621,11 +621,16 @@ input[type = 'radio'] {
 .board-card {
   position: relative;
   align-items: center;
+  margin-bottom: 15px;
   padding: 15px;
   width: 100%;
   background: var(--bg-sc);
   border-radius: 15px;
   box-shadow: var(--bs-pr);
+}
+
+.board-card:last-child {
+  margin-bottom: 0;
 }
 
 .board-card__img {
