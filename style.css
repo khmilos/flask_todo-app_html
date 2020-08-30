@@ -617,4 +617,46 @@ input[type = 'radio'] {
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
 /* Boards List Page */
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
-/* Filter */
+/* Board */
+.board-card {
+  position: relative;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  background: var(--bg-sc);
+  border-radius: 15px;
+  box-shadow: var(--bs-pr);
+}
+
+.board-card__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  box-shadow: var(--bs-pr);
+}
+
+.board-card__title {
+  margin-left: 10px;
+  color: var(--fc-sc);
+  font-size: var(--fs-lg);
+}
+
+.board-card__btn {
+  position: absolute;
+  top: 19px;
+  right: 5px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.board-card__dot {
+  margin-bottom: 3px;
+  width: 5px;
+  height: 5px;
+  background: var(--bg-pr);
+  border-radius: 50%;
+}
+
+.board-card__dot:last-child {
+  margin-bottom: 0;
+}

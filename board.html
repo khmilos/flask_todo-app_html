@@ -49,32 +49,44 @@
     <div class="container">
       <button class="filter-btn js-filter-boards-btn">Filter</button>
 
-      <!-- Modal: Profile Setup -->
-      <div class="modal-container">
-        <form class="filter js-filter-boards">
-          <h2 class="filter__title">Display</h2>
-          <ul class="filter__list">
-            <li class="filter__item">
-              <input 
-                type="radio" 
-                name="allowed_boards" 
-                id="only_mine" 
-                class="filter__radio" />
-              <label for="only_mine" class="filter__label">Only Mine</label>
-            </li>
-            <li class="filter__item">
-              <input 
-                type="radio" 
-                name="allowed_boards" 
-                id="any" 
-                class="filter__radio">
-              <label for="any" class="filter__label">Any</label>
-            </li>
-          </ul>
-          <button class="filter__submit">Submit</button>
-          <button class="modal-container__close js-filter-boards-close"></button>
-        </form>
+      <div class="wrapper">
+        <div href="./card.html" class="board-card">
+          <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
+          <h2 class="board-card__title">Working Tasks</h2>
+          <button class="board-card__btn">
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+          </button>
+        </div>
       </div>
+    </div>
+
+    <!-- Modal: Profile Setup -->
+    <div class="modal-container">
+      <form class="filter js-filter-boards">
+        <h2 class="filter__title">Display</h2>
+        <ul class="filter__list">
+          <li class="filter__item">
+            <input 
+              type="radio" 
+              name="allowed_boards" 
+              id="only_mine" 
+              class="filter__radio" />
+            <label for="only_mine" class="filter__label">Only Mine</label>
+          </li>
+          <li class="filter__item">
+            <input 
+              type="radio" 
+              name="allowed_boards" 
+              id="any" 
+              class="filter__radio">
+            <label for="any" class="filter__label">Any</label>
+          </li>
+        </ul>
+        <button class="filter__submit">Submit</button>
+        <button class="modal-container__close js-filter-boards-close"></button>
+      </form>
     </div>
   </main>
 
