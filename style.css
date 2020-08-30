@@ -413,6 +413,38 @@ input[type = 'radio'] {
 }
 
 
+/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
+/* Setup */
+.setup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  width: 100%;
+  background: var(--bg-sc);
+  border-radius: 15px;
+  box-shadow: var(--bs-pr);
+}
+
+.setup__title {
+  margin-bottom: 15px;
+  color: var(--fc-sc);
+  font-size: var(--fs-lg);
+}
+
+.setup__delete {
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  padding: 0 15px;
+  height: 40px;
+  background: var(--bg-pr);
+  border-radius: 8px;
+  box-shadow: var(--bs-pr);
+  color: var(--fc-sc);
+  font-size: var(--fs-sm);
+}
+
 
 
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
@@ -618,6 +650,10 @@ input[type = 'radio'] {
 /* Boards List Page */
 /* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
 /* Board */
+.wrapper {
+  flex-direction: column;
+}
+
 .board-card {
   position: relative;
   align-items: center;

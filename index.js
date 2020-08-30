@@ -173,21 +173,37 @@
       body,
       shadow,
     },
-    ANIMATION_TIME, {
+    ANIMATION_TIME, 
+    {
       toOpen: [document.querySelector('.js-customize')],
       toClose: [document.querySelector('.js-profile-setup-close')],
     },
   );
 
-  const filter = modalFactory.createModal(
+  const filterBoard = modalFactory.createModal(
     {
       container: document.querySelector('.js-filter-boards'),
       body,
       shadow,
-    }, ANIMATION_TIME,
+    }, 
+    ANIMATION_TIME,
     { 
       toOpen: [document.querySelector('.js-filter-boards-btn')],
       toClose: [document.querySelector('.js-filter-boards-close')],
-    }
+    },
   );
+  
+  const setupBoard = modalFactory.createModal(
+    {
+      container: document.querySelector('.js-setup-boards'),
+      body,
+      shadow,
+    },
+    ANIMATION_TIME,
+    {
+      toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
+      toClose: [document.querySelector('.js-setup-boards-close')],
+    },
+  );
+
 })()

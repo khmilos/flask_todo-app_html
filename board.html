@@ -52,8 +52,26 @@
       <div class="wrapper">
         <div href="./card.html" class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
-          <h2 class="board-card__title">Working Tasks</h2>
-          <button class="board-card__btn">
+          <h2 class="board-card__title">Working Tasks 1</h2>
+          <button class="board-card__btn js-setup-boards-btn">
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+          </button>
+        </div>
+        <div href="./card.html" class="board-card">
+          <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
+          <h2 class="board-card__title">Working Tasks 2</h2>
+          <button class="board-card__btn js-setup-boards-btn">
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+            <div class="board-card__dot"></div>
+          </button>
+        </div>
+        <div href="./card.html" class="board-card">
+          <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
+          <h2 class="board-card__title">Working Tasks 3</h2>
+          <button class="board-card__btn js-setup-boards-btn">
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
             <div class="board-card__dot"></div>
@@ -86,6 +104,16 @@
         </ul>
         <button class="filter__submit">Submit</button>
         <button class="modal-container__close js-filter-boards-close"></button>
+      </form>
+    </div>
+
+    <!-- Modal: Board setup -->
+    <div class="modal-container">
+      <form class="setup js-setup-boards">
+        <h2 class="setup__title">Setup</h2>
+
+        <button class="setup__delete">Exit & Delete</button>
+        <button class="modal-container__close js-setup-boards-close"></button>
       </form>
     </div>
   </main>
