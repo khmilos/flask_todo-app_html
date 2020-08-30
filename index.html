@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./index.js" defer></script>
+</head>
+<body class="js-body">
+  <!-- Header -->
+  <header class="header js-header">
+    <div class="container">
+      <div class="header__content">
+        <h1 class="header__title">Welcome</h1>
+
+        <button class="burger js-burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+        </button>
+
+        <nav class="nav js-nav">
+          <ul class="nav__list">
+            <li class="nav__item js-nav__item">
+              <a href="/" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <a href="/profile.html" class="nav__link">Profile</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <a href="/board.html" class="nav__link">Boards</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <button class="nav__link js-login">Login</button>
+            </li>
+            <li class="nav__item js-nav__item">
+              <button class="nav__link js-registration">Registration</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="container">
+      <div class="welcome-banner">
+        <img src="./img/banner.jpg" alt="Banner" class="welcome-banner__image">
+        <h2 class="welcome-banner__title">Best Todo-List </br> for <span class="welcome-banner__underline">You</span></h2>
+      </div>
+ 
+      <a href="./login.html" class="welcome-button">Login</a>
+      <a href="./registration.html" class="welcome-button">Registration</a>
+
+      <article class="article">
+        <h2 class="article__title">Your Info</h2>
+        <p class="article__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__text">Copyright © 2020, Example Corporation</div>
+  </footer>
+</body>
+</html>

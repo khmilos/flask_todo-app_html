@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./index.js" defer></script>
+</head>
+<body class="js-body">
+  <!-- Header -->
+  <header class="header js-header">
+    <div class="container">
+      <div class="header__content">
+        <h1 class="header__title">Registration</h1>
+
+        <button class="burger js-burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+        </button>
+
+        <nav class="nav js-nav">
+          <ul class="nav__list">
+            <li class="nav__item js-nav__item">
+              <a href="/" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <a href="/profile.html" class="nav__link">Profile</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <a href="/board.html" class="nav__link">Boards</a>
+            </li>
+            <li class="nav__item js-nav__item">
+              <button class="nav__link js-login">Login</button>
+            </li>
+            <li class="nav__item js-nav__item">
+              <button class="nav__link js-registration">Registration</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="container">
+      <form id="registration" class="form">
+        <div class="form__field">
+          <label for="email" class="form__label">Email:</label>
+          <input type="email" name="email" id="email" class="form__input" />
+        </div>
+        <div class="form__field">
+          <label for="password" class="form__label">Password:</label>
+          <input type="password" name="password" id="password" class="form__input" />
+        </div>
+        <div class="form__field">
+          <label for="passwordRepeat" class="form__label">Repeat Password:</label>
+          <input type="password" name="passwordRepeat" id="passwordRepeat" class="form__input" />
+        </div>
+        <div class="form__field">
+          <button class="form__submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__text">Copyright © 2020, Example Corporation</div>
+  </footer>
+</body>
+</html>
