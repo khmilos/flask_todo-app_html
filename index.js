@@ -208,11 +208,7 @@
   );
   
   const setupBoard = modalFactory.createModal(
-    {
-      container: document.querySelector('.js-setup-boards'),
-      body,
-      shadow,
-    },
+    { container: document.querySelector('.js-setup-boards'), body, shadow },
     ANIMATION_TIME,
     {
       toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
@@ -227,4 +223,13 @@
       document.querySelector('.js-setup-name').value = title;
     }
   });
+
+  const createBoard = modalFactory.createModal(
+    { container: document.querySelector('.js-board-create'), body, shadow },
+    ANIMATION_TIME,
+    {
+      toOpen: [document.querySelector('.js-board-create-btn')],
+      toClose: [document.querySelector('.js-board-create-close')]
+    }
+  )
 })()
