@@ -202,4 +202,28 @@
       toClose: [document.querySelector('.js-board-create-close')]
     }
   );
+
+  const filterTask = ModalFactory.createModal(
+    document.querySelector('.js-task-filter'),
+    {
+      toOpen: [document.querySelector('.js-task-filter-btn')],
+      toClose: [document.querySelector('.js-task-filter-close')]
+    }
+  );
+
+  const createTask = ModalFactory.createModal(
+    document.querySelector('.js-task-create'),
+    {
+      toOpen: [document.querySelector('.js-task-create-btn')],
+      toClose: [document.querySelector('.js-task-create-close')]
+    }
+  );
+
+  const setupTask = ModalFactory.createModal(
+    document.querySelector('.js-task-setup'),
+    {
+      toOpen: [...document.querySelectorAll('.js-task-setup-btn')],
+      toClose: [document.querySelector('.js-task-setup-close')]
+    }
+  );
 })()

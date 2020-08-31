@@ -13,7 +13,7 @@
   <header class="header js-header">
     <div class="container">
       <div class="header__content">
-        <a href="/"><h1 class="header__title">Your board</h1></a>
+        <a href="/"><h1 class="header__title">*Board Name*</h1></a>
 
         <button class="burger js-burger">
           <div class="burger__line"></div>
@@ -23,7 +23,7 @@
 
         <nav class="nav js-nav">
           <ul class="nav__list">
-            <li class="nav__item js-nav-item">
+            <li class="nav__item js-nav-item">  
               <a href="/" class="nav__link">Home</a>
             </li>
             <li class="nav__item js-nav-item">
@@ -46,6 +46,89 @@
 
   <!-- Main -->
   <main class="main">
+    <div class="container">
+      <button class="small-btn js-task-filter-btn">Filter</button>
+
+      <div class="wrapper">
+        <div class="task-card">
+          <h2 class="task-card__title task-card__title_completed">Todo Task</h2>
+          <p class="task-card__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+          </p>
+          <button class="btn-dots task-card__setup js-task-setup-btn"></button>
+        </div>
+        <div class="task-card">
+          <h2 class="task-card__title task-card__title_wait">Todo Task</h2>
+          <p class="task-card__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+          </p>
+          <button class="btn-dots task-card__setup js-task-setup-btn"></button>
+        </div>
+        <div class="task-card">
+          <h2 class="task-card__title task-card__title_process">Todo Task</h2>
+          <p class="task-card__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+          </p>
+          <button class="btn-dots task-card__setup js-task-setup-btn"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-wrapper">
+      <button class="big-btn js-task-create-btn">Create New</button>
+    </div>
+
+    <!-- Modal: Setup -->
+    <div class="modal js-task-setup">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">*TASK NAME*</h2>
+        <button class="modal__close js-task-setup-close"></button>
+      </form>
+    </div>
+
+    <!-- Modal: Filter -->
+    <div class="modal js-task-filter">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">Display</h2>
+        <h3 class="modal__subtitle">Sort By</h3>
+        <div class="modal__field modal__field_row">
+          <input type="radio" name="sort" id="task-sort-new" class="modal__radio" checked />
+          <label for="task-sort-new" class="modal__label modal__label_row">New first</label>
+        </div>
+        <div class="modal__field modal__field_row">
+          <input type="radio" name="sort" id="task-sort-old" class="modal__radio" />
+          <label for="task-sort-old" class="modal__label modal__label_row">Old first</label>
+        </div>
+        <h3 class="modal__subtitle">Display tasks</h3>
+        <div class="modal__field modal__field_row">
+          <input type="radio" name="allowed_boards" id="all" class="modal__radio" checked />
+          <label for="all" class="modal__label modal__label_row">All</label>
+        </div>
+        <div class="modal__field modal__field_row">
+          <input type="radio" name="allowed_boards" id="only_mine" class="modal__radio" />
+          <label for="only_mine" class="modal__label modal__label_row">Only Mine</label>
+        </div>
+        <div class="modal__field">
+          <button class="modal__btn">Submit</button>
+        </div>
+        <button class="modal__close js-task-filter-close"></button>
+      </form>
+    </div>
+
+    <!-- Modal: Create task -->
+    <div class="modal js-task-create">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">Create Board</h2>
+        <div class="modal__field">
+          <div class="modal__label">Name</div>
+          <input type="text" id="create-name" class="modal__text" />
+        </div>
+        <div class="modal__field">
+          <button class="modal__btn">Create</button>
+        </div>
+        <button class="modal__close js-task-create-close"></button>
+      </form>
+    </div>
   </main>
 
   <!-- Footer -->

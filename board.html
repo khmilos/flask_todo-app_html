@@ -53,29 +53,17 @@
         <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
           <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks 1</h2></a>
-          <button class="board-card__btn js-setup-boards-btn">
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-          </button>
+          <button class="btn-dots board-card__setup js-setup-boards-btn"></button>
         </div>
         <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
           <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks 2</h2></a>
-          <button class="board-card__btn js-setup-boards-btn">
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-          </button>
+          <button class="btn-dots board-card__setup js-setup-boards-btn"></button>
         </div>
         <div class="board-card">
           <img src="./img/board.jpeg" alt="Board" class="board-card__img" />
           <a href="./card.html"><h2 class="board-card__title js-board-card-title">Working Tasks 3</h2></a>
-          <button class="board-card__btn js-setup-boards-btn">
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-            <div class="board-card__dot"></div>
-          </button>
+          <button class="btn-dots board-card__setup js-setup-boards-btn"></button>
         </div>
       </div>
 
@@ -89,28 +77,12 @@
       <form action="" class="modal__content">
         <h2 class="modal__title">Display</h2>
         <div class="modal__field modal__field_row">
-          <input 
-              type="radio" 
-              name="allowed_boards" 
-              id="only_mine" 
-              class="modal__radio" />
-            <label 
-              for="only_mine" 
-              class="modal__label modal__label_row">
-              Only Mine
-            </label>
+          <input type="radio" name="allowed_boards" id="only_mine" class="modal__radio" />
+          <label for="only_mine" class="modal__label modal__label_row">Only Mine</label>
         </div>
         <div class="modal__field modal__field_row">
-          <input 
-              type="radio" 
-              name="allowed_boards" 
-              id="all" 
-              class="modal__radio" />
-            <label 
-              for="all"
-              class="modal__label modal__label_row">
-              All
-            </label>
+          <input type="radio" name="allowed_boards" id="all" class="modal__radio" />
+          <label for="all"class="modal__label modal__label_row">All</label>
         </div>
         <div class="modal__field">
           <button class="modal__btn">Submit</button>
@@ -125,10 +97,7 @@
         <h2 class="modal__title">Setup</h2>
         <div class="modal__field">
           <label for="" class="modal__label">Name</label>
-          <input 
-            type="text" 
-            id="setup-name" 
-            class="modal__text js-board-setup-name" />
+          <input type="text" id="setup-name" class="modal__text js-board-setup-name" />
         </div>
         <div class="modal__field">
           <button class="modal__btn">Submit</button>

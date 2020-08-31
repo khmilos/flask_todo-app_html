@@ -10,6 +10,12 @@
   --bg-ac: #6B9080; /* Active background color */
   --bg-ac-alt: #EAF4F4; /* Alternative Active background color */
   --bg-dg-ac: #FF8A8A; /* Danger Active background color */
+  --bg-completed: #A0FFB0;
+  --bg-failed: #FFA0A0;
+  --bg-process: #A0FFD1;
+  --bg-pause: #F7FFA0;
+  --bg-block: #E7E7E7;
+  --bg-wait: #DBDAFF;
   
   --bs-pr: 0px 0px 5px 1px rgba(0, 0, 0, 0.15); /* Primary shadow */
 
@@ -29,6 +35,10 @@
   --at-sm: .1.5s; /* Small animation time */
 
   --svg-close: url('./img/close.svg'); /* SVG image of close button */
+  --svg-dots: url('./img/dots.svg'); /* SVG image of setup dots */
+  --svg-completed: url('./img/completed.svg');
+  --svg-process: url('./img/process.svg');
+  --svg-wait: url('./img/wait.svg');
 }
 
 *, *::after, *::before {
@@ -69,6 +79,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 ul {
@@ -278,6 +289,12 @@ input[type = 'radio'] {
   font-size: var(--fs-lg);
 }
 
+.modal__subtitle {
+  margin-bottom: 15px;
+  color: var(--fc-sc);
+  font-size: var(--fs-md);
+}
+
 .modal__field {
   display: flex;
   flex-direction: column;
@@ -290,6 +307,7 @@ input[type = 'radio'] {
 
 .modal__field_row {
   flex-direction: row;
+  align-items: center;
 }
 
 .modal__label {
@@ -312,9 +330,13 @@ input[type = 'radio'] {
 }
 
 .modal__text {
-  padding: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--bs-pr);
   color: var(--fc-sc);
   font-size: var(--fs-md);
+  outline: none;
 }
 
 .modal__textarea {
@@ -324,6 +346,7 @@ input[type = 'radio'] {
   box-shadow: var(--bs-pr);
   font-size: var(--fs-sm);
   resize: none;
+  outline: none;
 }
 
 .modal__btn {
@@ -431,7 +454,7 @@ input[type = 'radio'] {
 .btn-wrapper {
   position: relative;
   margin-top: auto;
-  padding: 30px 0 15px 0;
+  padding: 30px 15px 15px 15px;
   width: 100%; 
 }
 
@@ -439,10 +462,17 @@ input[type = 'radio'] {
   content: '';
   position: absolute;
   top: 15px;
-  left: 0;
-  width: 100%;
+  left: 15px;
+  right: 15px;
   height: 1px;
   background: var(--fc-sc);
+}
+
+.btn-dots {
+  width: 30px;
+  height: 42px;
+  background: var(--svg-dots) no-repeat center;
+  background-size: 5px 21px;
 }
 
 
@@ -480,7 +510,8 @@ input[type = 'radio'] {
   height: 40px;
   border: none;
   border-radius: 8px;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
+  outline: none;
 }
 
 .form__submit {
@@ -653,22 +684,67 @@ input[type = 'radio'] {
   font-size: var(--fs-lg);
 }
 
-.board-card__btn {
+.board-card__setup {
   position: absolute;
   top: 19px;
   right: 5px;
+}
+
+
+
+
+/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
+/* Tasks List Page */
+/* *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ** */
+/* Task */
+.task-card {
+  position: relative;
   flex-direction: column;
-  padding: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: var(--bg-sc);
+  border-radius: 15px;
+  box-shadow: var(--bs-pr);
 }
 
-.board-card__dot {
-  margin-bottom: 3px;
-  width: 5px;
-  height: 5px;
-  background: var(--bg-pr);
-  border-radius: 50%;
-}
-
-.board-card__dot:last-child {
+.task-card:last-child {
   margin-bottom: 0;
+}
+
+.task-card__title {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 31px;
+  color: var(--fc-sc);
+  font-size: var(--fs-md);
+}
+
+.task-card__title::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 0;
+  display: flex;
+  width: 21px;
+  height: 21px;
+  border-radius: 5px;
+  box-shadow: var(--bs-pr);
+}
+
+.task-card__title_completed::before {
+  background: var(--bg-completed) var(--svg-completed) no-repeat center;
+}
+
+.task-card__title_process::before {
+  background: var(--bg-process) var(--svg-process) no-repeat center;
+}
+
+.task-card__title_wait::before {
+  background: var(--bg-wait) var(--svg-wait) no-repeat center;
+}
+
+.task-card__setup {
+  position: absolute;
+  top: 8px;
+  right: 5px;
 }
