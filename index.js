@@ -1,138 +1,127 @@
 (function() {
-  const body = document.querySelector('.js-body');
-  // Modal Shadow
-  const shadow = document.createElement('DIV');
-  shadow.classList.add('modal-shadow');
-
   // Constants
-  const MIN_TIME = 11;
+  const body = document.querySelector('.js-body');
+  const headerLinksHeight = (() => {
+    let height = 0;
+    document.querySelectorAll('.js-nav-item')
+      .forEach((element) => height += element.offsetHeight);
+    return height;
+  })();
+  const MIN_TIME = 17;
   const ANIMATION_TIME = 500;
 
   // Functions
-  function sleep(ms) { 
+  function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   // Classes
   class Modal {
-    constructor({ container, body, shadow, }, time) {
-      this.container = container;
-      this.body = body;
-      this.shadow = shadow;
-      this.time = time;
-      this.status = {
-        isOpen: false,
-        isAnimated: false,
-      };
+    static _shadow = Object.assign(
+      document.createElement('DIV'),
+      {className: 'modal-shadow'}
+    );
 
-      this.lastEventTarget = null;
-      this.listener = function() {};
-    }
-
-    set isOpen(value) {
-      this.status.isOpen = value;
-      this.listener(value);
-    }
-
-    registerListener(listener) {
-      this.listener = listener;
-    }
+    _isOpen = false;
+    _isAnimating = false;
     
-    async open(target) {
-      if (this.status.isAnimated || this.status.isOpen) return this;
-      this.lastEventTarget = target;
-      this.status.isAnimated = true;
-      this.isOpen = true;
+    constructor(container, openListener = function() {}) {
+      this._container = container;
+      this._openListener = openListener;
+    }
 
-      this.container.parentNode.classList.add('forward');
-      this.body.classList.add('body-fixed');
-      this.body.appendChild(shadow);
+    static get shadow() { return this._shadow; }
+    get container() { return this._container; }
+
+    async open(triggeredBy) {
+      if (this._isAnimating || this._isOpen) return;
+      this._isAnimating = true;
+      this._openListener(triggeredBy);
+
+      this._container.classList.add('forward');
+      body.classList.add('body-fixed');
+      body.appendChild(Modal._shadow);
       await sleep(MIN_TIME);
-      this.container.parentNode.classList.add('active');
-      this.shadow.classList.add('active');
-      await sleep(this.time);
-  
-      this.status.isAnimated = false;
-      return this;
+      this._container.classList.add('active');
+      Modal._shadow.classList.add('active');
+      await sleep(ANIMATION_TIME);
+      
+      this._isOpen = true;
+      this._isAnimating = false;
     }
-  
-    async close(target) {
-      if (this.status.isAnimated || !this.status.isOpen) return this;
-      this.lastEventTarget = target;
-      this.status.isAnimated = true;
-      this.isOpen = false;
 
-      this.shadow.classList.remove('active');
-      this.container.parentNode.classList.remove('active');
-      await sleep(this.time);
-      this.container.parentNode.classList.remove('forward');
-      this.body.removeChild(this.shadow);
-      this.body.classList.remove('body-fixed');
+    async close() {
+      if (this._isAnimating || !this._isOpen) return;
+      this._isAnimating = true;
 
-      this.status.isAnimated = false;
-      return this;
+      this._container.classList.remove('active');
+      Modal._shadow.classList.remove('active');
+      await sleep(ANIMATION_TIME);
+      this._container.classList.remove('forward');
+      body.removeChild(Modal._shadow);
+      body.classList.remove('body-fixed');
+
+      this._isAnimating = false;
+      this._isOpen = false;
     }
-    
-    toggle() {
-      if (!this.status.isOpen) this.open();
-      else this.close();
+
+    async toggle(triggeredBy) {
+      if (!this._isOpen) await this.open(triggeredBy);
+      else await this.close();
     }
   }
 
   class Header extends Modal {
-    constructor({ container, body, shadow, dropdown, burger }, time) {
-      super({ container, body, shadow, }, time);
-      this.dropdown = dropdown;
-      this.burger = burger;
+    constructor(container, dropdown, burger) {
+      super(container);
+      this._dropdown = dropdown;
+      this._burger = burger;
     }
 
     async open() {
-      if (this.status.isAnimated || this.status.isOpen) return this;
-      this.isOpen = true;
-      this.status.isAnimated = true;
+      if (this._isAnimating || this._isOpen) return;
+      this._isAnimating = true;
 
-      this.body.classList.add('body-fixed');
-      this.burger.classList.add('active');
-      this.dropdown.classList.add('active');
-      this.container.classList.add('forward');
-      const links = document.querySelectorAll('.js-nav__item');
-      let height = 0;
-      links.forEach((element) => height += element.offsetHeight);
-      this.dropdown.setAttribute('style', `height: ${height}px;`);
-      this.body.appendChild(this.shadow);
+      body.classList.add('body-fixed');
+      this._burger.classList.add('active');
+      this._dropdown.classList.add('active');
+      this._container.classList.add('forward'); 
+      this._dropdown.setAttribute('style', `height: ${headerLinksHeight}px;`);
+      body.appendChild(Modal._shadow);
       await sleep(MIN_TIME);
-      this.shadow.classList.add('active');
+      Modal._shadow.classList.add('active');
       await sleep(ANIMATION_TIME);
 
-      this.status.isAnimated = false;
-      return this;
+      this._isAnimating = false;
+      this._isOpen = true;
     }
 
     async close() {
-      if (this.status.isAnimated || !this.status.isOpen) return false;
-      this.isOpen = false;
-      this.status.isAnimated = this;
-  
-      this.burger.classList.remove('active');
-      this.dropdown.classList.remove('active');
-      this.dropdown.setAttribute('style', '');
-      this.shadow.classList.remove('active');
+      if (this._isAnimating || !this._isOpen) return;
+      this._isAnimating = true;
+      
+      this._burger.classList.remove('active');
+      this._dropdown.classList.remove('active');
+      this._dropdown.setAttribute('style', '');
+      Modal._shadow.classList.remove('active');
       await sleep(ANIMATION_TIME);
-      body.removeChild(this.shadow);
-      this.container.classList.remove('forward');
-      this.body.classList.remove('body-fixed');
-  
-      this.status.isAnimated = false;
+      body.removeChild(Modal._shadow);
+      this._container.classList.remove('forward');
+      body.classList.remove('body-fixed');
+      
+      this._isAnimating = false;
+      this._isOpen = false;
       return this;
     }
   }
 
   // Factories
-  class modalFactory {
-    static _subscribe({ toOpen, toClose, toToggle }, modal, shadow) {
+  class ModalFactory {
+    static _subscribe(modal, {toOpen, toClose, toToggle}) {
       const action = [modal.open, modal.close, modal.toggle];
+
       [toOpen, toClose, toToggle].forEach((group, index) => {
-        if (!group) return;
+        if (!group) return; 
         group.forEach((element) => {
           element.addEventListener('click', (e) => {
             e.preventDefault();
@@ -140,54 +129,44 @@
           });
         });
       });
-      window.addEventListener('click', (event) => {
-        if (event.target === modal.container.parentNode
-          || event.target === shadow) {
-            modal.close(window);
-          }
+
+      window.addEventListener('click', (e) => {
+        if (e.target === modal.container || e.target === Modal.shadow) {
+          modal.close();
+        }
       });
+
       return modal;
     }
 
-    static createModal(modalElements, animation, triggerElements) {
-      if (!modalElements.container) return null;
-      return this._subscribe(
-        triggerElements, 
-        new Modal(modalElements, animation),
-        modalElements.shadow,
-      );
+    static createModal(container, triggerElements, listener) {
+      if (!container) return null;
+      return this._subscribe(new Modal(container, listener), triggerElements);
     }
 
-    static createHeader(modalElements, animation, triggerElements) {
-      if (!modalElements.container) return null;
+    static createHeader(container, dropdown, burger, triggerElements) {
+      if (!container) return null;
       return this._subscribe(
-        triggerElements,
-        new Header(modalElements, animation),
-        modalElements.shadow,
+        new Header(container, dropdown, burger), 
+        triggerElements
       );
     }
   }
-  
+
   // Scripts
-  const header = modalFactory.createHeader(
-    {
-      container: document.querySelector('.js-header'),
-      dropdown: document.querySelector('.js-nav'),
-      burger: document.querySelector('.js-burger'),
-      body,
-      shadow,
-    },
-    ANIMATION_TIME,
+  const header = ModalFactory.createHeader(
+    document.querySelector('.js-header'),
+    document.querySelector('.js-nav'),
+    document.querySelector('.js-burger'),
     { toToggle: [document.querySelector('.js-burger')] },
   );
 
-  const profile = modalFactory.createModal(
-    { container: document.querySelector('.js-profile-setup'), body, shadow, },
-    ANIMATION_TIME, 
+  const profile = ModalFactory.createModal(
+    document.querySelector('.js-profile-setup'),
     {
       toOpen: [document.querySelector('.js-customize')],
       toClose: [document.querySelector('.js-profile-setup-close')],
-    },
+    }
   );
   if (profile) {
     const userInfo = document.querySelector('.js-profile-info')
@@ -195,41 +174,41 @@
     document.querySelector('.js-profile-setup-info').value = userInfo;
   }
 
-  const filterBoard = modalFactory.createModal(
-    {
-      container: document.querySelector('.js-filter-boards'),
-      body,
-      shadow,
-    }, 
-    ANIMATION_TIME,
-    { 
-      toOpen: [document.querySelector('.js-filter-boards-btn')],
-      toClose: [document.querySelector('.js-filter-boards-close')],
-    },
-  );
+  // const filterBoard = modalFactory.createModal(
+  //   {
+  //     container: document.querySelector('.js-filter-boards'),
+  //     body,
+  //     shadow,
+  //   }, 
+  //   ANIMATION_TIME,
+  //   { 
+  //     toOpen: [document.querySelector('.js-filter-boards-btn')],
+  //     toClose: [document.querySelector('.js-filter-boards-close')],
+  //   },
+  // );
   
-  const setupBoard = modalFactory.createModal(
-    { container: document.querySelector('.js-setup-boards'), body, shadow },
-    ANIMATION_TIME,
-    {
-      toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
-      toClose: [document.querySelector('.js-setup-boards-close')],
-    },
-  );
-  if (setupBoard) setupBoard.registerListener(function(value) {
-    if (value) {
-      const title = this.lastEventTarget.parentNode
-        .querySelector('.js-board-card-title').textContent;
-      document.querySelector('.js-setup-name').value = title;
-    }
-  });
+  // const setupBoard = modalFactory.createModal(
+  //   { container: document.querySelector('.js-setup-boards'), body, shadow },
+  //   ANIMATION_TIME,
+  //   {
+  //     toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
+  //     toClose: [document.querySelector('.js-setup-boards-close')],
+  //   },
+  // );
+  // if (setupBoard) setupBoard.registerListener(function(value) {
+  //   if (value) {
+  //     const title = this.lastEventTarget.parentNode
+  //       .querySelector('.js-board-card-title').textContent;
+  //     document.querySelector('.js-setup-name').value = title;
+  //   }
+  // });
 
-  const createBoard = modalFactory.createModal(
-    { container: document.querySelector('.js-board-create'), body, shadow },
-    ANIMATION_TIME,
-    {
-      toOpen: [document.querySelector('.js-board-create-btn')],
-      toClose: [document.querySelector('.js-board-create-close')]
-    }
-  )
+  // const createBoard = modalFactory.createModal(
+  //   { container: document.querySelector('.js-board-create'), body, shadow },
+  //   ANIMATION_TIME,
+  //   {
+  //     toOpen: [document.querySelector('.js-board-create-btn')],
+  //     toClose: [document.querySelector('.js-board-create-close')]
+  //   }
+  // )
 })()
