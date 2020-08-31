@@ -13,7 +13,7 @@
   <header class="header js-header">
     <div class="container">
       <div class="header__content">
-        <h1 class="header__title">Welcome</h1>
+        <a href="/"><h1 class="header__title">Welcome</h1></a>
 
         <button class="burger js-burger">
           <div class="burger__line"></div>
@@ -33,10 +33,10 @@
               <a href="/board.html" class="nav__link">Boards</a>
             </li>
             <li class="nav__item js-nav-item">
-              <button class="nav__link js-login">Login</button>
+              <a href="/login.html" class="nav__link">Login</a>
             </li>
             <li class="nav__item js-nav-item">
-              <button class="nav__link js-registration">Registration</button>
+              <a href="/registration.html" class="nav__link">Registration</a>
             </li>
           </ul>
         </nav>
@@ -51,9 +51,11 @@
         <img src="./img/banner.jpg" alt="Banner" class="welcome-banner__image">
         <h2 class="welcome-banner__title">Best Todo-List <br> for <span class="welcome-banner__underline">You</span></h2>
       </div>
- 
-      <a href="./login.html" class="welcome-button">Login</a>
-      <a href="./registration.html" class="welcome-button">Registration</a>
+
+      <div class="welcome-links">
+        <a href="./login.html" class="welcome-links__btn big-btn">Login</a>
+        <a href="./registration.html" class="welcome-links__btn big-btn">Registration</a>
+      </div>
 
       <article class="article">
         <h2 class="article__title">Your Info</h2>

@@ -8,7 +8,7 @@
     return height;
   })();
   const MIN_TIME = 17;
-  const ANIMATION_TIME = 500;
+  const ANIMATION_TIME = 300;
 
   // Functions
   function sleep(ms) {
@@ -174,41 +174,32 @@
     document.querySelector('.js-profile-setup-info').value = userInfo;
   }
 
-  // const filterBoard = modalFactory.createModal(
-  //   {
-  //     container: document.querySelector('.js-filter-boards'),
-  //     body,
-  //     shadow,
-  //   }, 
-  //   ANIMATION_TIME,
-  //   { 
-  //     toOpen: [document.querySelector('.js-filter-boards-btn')],
-  //     toClose: [document.querySelector('.js-filter-boards-close')],
-  //   },
-  // );
-  
-  // const setupBoard = modalFactory.createModal(
-  //   { container: document.querySelector('.js-setup-boards'), body, shadow },
-  //   ANIMATION_TIME,
-  //   {
-  //     toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
-  //     toClose: [document.querySelector('.js-setup-boards-close')],
-  //   },
-  // );
-  // if (setupBoard) setupBoard.registerListener(function(value) {
-  //   if (value) {
-  //     const title = this.lastEventTarget.parentNode
-  //       .querySelector('.js-board-card-title').textContent;
-  //     document.querySelector('.js-setup-name').value = title;
-  //   }
-  // });
+  const filterBoard = ModalFactory.createModal(
+    document.querySelector('.js-board-filter'),
+    { 
+      toOpen: [document.querySelector('.js-board-filter-btn')],
+      toClose: [document.querySelector('.js-board-filter-close')]
+    }
+  );
 
-  // const createBoard = modalFactory.createModal(
-  //   { container: document.querySelector('.js-board-create'), body, shadow },
-  //   ANIMATION_TIME,
-  //   {
-  //     toOpen: [document.querySelector('.js-board-create-btn')],
-  //     toClose: [document.querySelector('.js-board-create-close')]
-  //   }
-  // )
+  const setupBoard = ModalFactory.createModal(
+    document.querySelector('.js-board-setup'),
+    {
+      toOpen: [...document.querySelectorAll('.js-setup-boards-btn')],
+      toClose: [document.querySelector('.js-board-setup-close')]
+    },
+    (triggeredBy) => {
+      const title = triggeredBy
+        .parentNode.querySelector('.js-board-card-title').textContent;
+      document.querySelector('.js-board-setup-name').value = title;
+    }
+  );
+
+  const createBoard = ModalFactory.createModal(
+    document.querySelector('.js-board-create'),
+    {
+      toOpen: [document.querySelector('.js-board-create-btn')],
+      toClose: [document.querySelector('.js-board-create-close')]
+    }
+  );
 })()

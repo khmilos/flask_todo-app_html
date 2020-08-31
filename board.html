@@ -13,7 +13,7 @@
   <header class="header js-header">
     <div class="container">
       <div class="header__content">
-        <h1 class="header__title">Your Boards</h1>
+        <a href="/"><h1 class="header__title">Your Boards</h1></a>
 
         <button class="burger js-burger">
           <div class="burger__line"></div>
@@ -33,10 +33,10 @@
               <a href="/board.html" class="nav__link">Boards</a>
             </li>
             <li class="nav__item js-nav-item">
-              <button class="nav__link js-login">Login</button>
+              <a href="/login.html" class="nav__link">Login</a>
             </li>
             <li class="nav__item js-nav-item">
-              <button class="nav__link js-registration">Registration</button>
+              <a href="/registration.html" class="nav__link">Registration</a>
             </li>
           </ul>
         </nav>
@@ -47,7 +47,7 @@
   <!-- Main -->
   <main class="main">
     <div class="container">
-      <button class="filter-btn js-filter-boards-btn">Filter</button>
+      <button class="small-btn js-board-filter-btn">Filter</button>
 
       <div class="wrapper">
         <div class="board-card">
@@ -79,64 +79,79 @@
         </div>
       </div>
 
-      <div class="create-btn">
-        <button class="create-btn__btn js-board-create-btn">Create New</button>
+      <div class="btn-wrapper">
+        <button class="big-btn js-board-create-btn">Create New</button>
       </div>
     </div>
 
     <!-- Modal: Filter -->
-    <div class="modal-container">
-      <form class="filter js-filter-boards">
-        <h2 class="filter__title">Display</h2>
-        <ul class="filter__list">
-          <li class="filter__item">
-            <input 
+    <div class="modal js-board-filter">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">Display</h2>
+        <div class="modal__field modal__field_row">
+          <input 
               type="radio" 
               name="allowed_boards" 
               id="only_mine" 
-              class="filter__radio" />
-            <label for="only_mine" class="filter__label">Only Mine</label>
-          </li>
-          <li class="filter__item">
-            <input 
+              class="modal__radio" />
+            <label 
+              for="only_mine" 
+              class="modal__label modal__label_row">
+              Only Mine
+            </label>
+        </div>
+        <div class="modal__field modal__field_row">
+          <input 
               type="radio" 
               name="allowed_boards" 
-              id="any" 
-              class="filter__radio" 
-              checked />
-            <label for="any" class="filter__label">All</label>
-          </li>
-        </ul>
-        <button class="filter__submit">Submit</button>
-        <button class="modal-container__close js-filter-boards-close"></button>
+              id="all" 
+              class="modal__radio" />
+            <label 
+              for="all"
+              class="modal__label modal__label_row">
+              All
+            </label>
+        </div>
+        <div class="modal__field">
+          <button class="modal__btn">Submit</button>
+        </div>
+        <button class="modal__close js-board-filter-close"></button>
       </form>
     </div>
 
-    <!-- Modal: Board setup -->
-    <div class="modal-container">
-      <form class="setup js-setup-boards">
-        <h2 class="setup__title">Setup</h2>
-        <div class="setup__field">
-          <label for="name" class="setup__label">Name</label>
-          <input type="text" name="name" id="name" class="setup__name js-setup-name" />
+    <!-- Modal: Board Setup -->
+    <div class="modal js-board-setup">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">Setup</h2>
+        <div class="modal__field">
+          <label for="" class="modal__label">Name</label>
+          <input 
+            type="text" 
+            id="setup-name" 
+            class="modal__text js-board-setup-name" />
         </div>
-        <div class="setup__field">
-          <button class="setup__submit">Submit</button>
+        <div class="modal__field">
+          <button class="modal__btn">Submit</button>
         </div>
-        <div class="setup__field">
-          <button class="setup__delete">Exit & Delete</button>
+        <div class="modal__field">
+          <button class="modal__btn modal__btn_danger">Exit & Delete</button>
         </div>
-        <button class="modal-container__close js-setup-boards-close"></button>
+        <button class="modal__close js-board-setup-close"></button>
       </form>
     </div>
 
-    <!-- Modal: Board create -->
-    <div class="modal-container">
-      <form class="create js-board-create">
-        <h2 class="create__title">Create Board</h2>
-        <div class="create__field">
+    <!-- Modal: Board Create -->
+    <div class="modal js-board-create">
+      <form action="" class="modal__content">
+        <h2 class="modal__title">Create Board</h2>
+        <div class="modal__field">
+          <div class="modal__label">Name</div>
+          <input type="text" id="create-name" class="modal__text" />
         </div>
-        <button class="modal-container__close js-board-create-close"></button>
+        <div class="modal__field">
+          <button class="modal__btn">Create</button>
+        </div>
+        <button class="modal__close js-board-create-close"></button>
       </form>
     </div>
   </main>
