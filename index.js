@@ -182,17 +182,18 @@
   );
 
   const profile = modalFactory.createModal(
-    {
-      container: document.querySelector('.js-profile-setup'),
-      body,
-      shadow,
-    },
+    { container: document.querySelector('.js-profile-setup'), body, shadow, },
     ANIMATION_TIME, 
     {
       toOpen: [document.querySelector('.js-customize')],
       toClose: [document.querySelector('.js-profile-setup-close')],
     },
   );
+  if (profile) {
+    const userInfo = document.querySelector('.js-profile-info')
+      .innerHTML.trim();
+    document.querySelector('.js-profile-setup-info').value = userInfo;
+  }
 
   const filterBoard = modalFactory.createModal(
     {
@@ -215,8 +216,7 @@
       toClose: [document.querySelector('.js-setup-boards-close')],
     },
   );
-
-  setupBoard.registerListener(function(value) {
+  if (setupBoard) setupBoard.registerListener(function(value) {
     if (value) {
       const title = this.lastEventTarget.parentNode
         .querySelector('.js-board-card-title').textContent;

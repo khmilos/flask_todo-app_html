@@ -72,7 +72,7 @@
 
       <article class="article">
         <h2 class="article__title">Your Info</h2>
-        <p class="article__text">
+        <p class="article__text js-profile-info">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
         <button class="profile-customize js-customize">Customize</button>
@@ -80,17 +80,17 @@
     </div>
 
     <!-- Modal: Profile Setup -->
-    <div class="modal-container">
-      <form class="profile-setup js-profile-setup">
-        <h2 class="profile-setup__title">Customize</h2>
-        <div class="profile-setup__field">
-          <label for="info" class="profile-setup__label">Your Info</label>
-          <textarea name="info" id="info" cols="30" rows="10" class="profile-setup__info"></textarea>
+    <div class="modal">
+      <form class="modal__content js-profile-setup">
+        <h2 class="modal__title">Profile Setup</h2>
+        <div class="modal__field">
+          <label for="info" class="modal__label"></label>
+          <textarea name="info" id="info" cols="30" rows="10" class="modal__textarea js-profile-setup-info"></textarea>
         </div>
-        <div class="profile-setup__field">
-          <button class="profile-setup__submit">Submit</button>
+        <div class="modal__field">
+          <button class="modal__btn">Submit</button>
         </div>
-        <button class="modal-container__close js-profile-setup-close"></button>
+        <button class="modal__close js-profile-setup-close"></button>
       </form>
     </div>
   </main>
