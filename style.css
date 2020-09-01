@@ -275,7 +275,6 @@ input[type = 'radio'] {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
   padding: 15px;
   min-width: 290px;
   background-color: var(--bg-sc);
@@ -346,6 +345,19 @@ input[type = 'radio'] {
   box-shadow: var(--bs-pr);
   font-size: var(--fs-sm);
   resize: none;
+  outline: none;
+}
+
+.modal__select {
+  display: flex;
+  padding: 0 5px;
+  height: 40px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--bs-pr);
+  color: var(--fc-sc);
+  font-size: var(--fs-md);
   outline: none;
 }
 

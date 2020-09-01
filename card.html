@@ -51,22 +51,22 @@
 
       <div class="wrapper">
         <div class="task-card">
-          <h2 class="task-card__title task-card__title_completed">Todo Task</h2>
-          <p class="task-card__text">
+          <h2 class="task-card__title task-card__title_completed js-task-title js-task-complete">Todo Task 1</h2>
+          <p class="task-card__text js-task-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
           </p>
           <button class="btn-dots task-card__setup js-task-setup-btn"></button>
         </div>
         <div class="task-card">
-          <h2 class="task-card__title task-card__title_wait">Todo Task</h2>
-          <p class="task-card__text">
+          <h2 class="task-card__title task-card__title_wait js-task-title js-task-wait">Todo Task 2</h2>
+          <p class="task-card__text js-task-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
           </p>
           <button class="btn-dots task-card__setup js-task-setup-btn"></button>
         </div>
         <div class="task-card">
-          <h2 class="task-card__title task-card__title_process">Todo Task</h2>
-          <p class="task-card__text">
+          <h2 class="task-card__title task-card__title_process js-task-title js-task-process">Todo Task 3</h2>
+          <p class="task-card__text js-task-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
           </p>
           <button class="btn-dots task-card__setup js-task-setup-btn"></button>
@@ -81,7 +81,29 @@
     <!-- Modal: Setup -->
     <div class="modal js-task-setup">
       <form action="" class="modal__content">
-        <h2 class="modal__title">*TASK NAME*</h2>
+        <h2 class="modal__title">Task Status</h2>
+        <div class="modal__field">
+          <label for="setup-name" class="modal__label">Name</label>
+          <input type="text" name="name" id="setup-name" class="modal__text js-task-setup-name" />
+        </div>
+        <div class="modal__field">
+          <label for="setup-status" class="modal__label">Status</label>
+          <select name="select" id="setup-select" class="modal__select">
+            <option class="js-option js-option-wait">Wait</option>
+            <option class="js-option js-option-process">In Process</option>
+            <option class="js-option js-option-complete">Complete</option>
+          </select>
+        </div>
+        <div class="modal__field">
+          <label for="setup-description" class="modal__label">Description</label>
+          <textarea name="description" id="setup-description" cols="30" rows="10" class="modal__textarea js-task-setup-description"></textarea>
+        </div>
+        <div class="modal__field">
+          <button class="modal__btn">Submit Changes</button>
+        </div>
+        <div class="modal__field">
+          <button class="modal__btn modal__btn_danger">Delete</button>
+        </div>
         <button class="modal__close js-task-setup-close"></button>
       </form>
     </div>
@@ -120,8 +142,11 @@
       <form action="" class="modal__content">
         <h2 class="modal__title">Create Board</h2>
         <div class="modal__field">
-          <div class="modal__label">Name</div>
-          <input type="text" id="create-name" class="modal__text" />
+          <label for="create-name" class="modal__label">Name</label>
+          <input type="text" id="create-name" name="name" class="modal__text" />
+        </div><div class="modal__field">
+          <label for="create-description" class="modal__label">Description</label>
+          <textarea name="description" id="create-description" cols="30" rows="10" class="modal__textarea"></textarea>
         </div>
         <div class="modal__field">
           <button class="modal__btn">Create</button>

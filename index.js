@@ -111,7 +111,6 @@
       
       this._isAnimating = false;
       this._isOpen = false;
-      return this;
     }
   }
 
@@ -190,7 +189,7 @@
     },
     (triggeredBy) => {
       const title = triggeredBy
-        .parentNode.querySelector('.js-board-card-title').textContent;
+        .parentNode.querySelector('.js-board-card-title').textContent.trim();
       document.querySelector('.js-board-setup-name').value = title;
     }
   );
@@ -224,6 +223,30 @@
     {
       toOpen: [...document.querySelectorAll('.js-task-setup-btn')],
       toClose: [document.querySelector('.js-task-setup-close')]
+    },
+    (triggeredBy) => {
+      const parent = triggeredBy.parentNode; 
+      const h2 = parent.querySelector('.js-task-title');
+      const decription = parent.querySelector('.js-task-description')
+        .textContent.trim();
+
+      const title = h2.textContent.trim();
+      document.querySelector('.js-task-setup-name').value = title;
+
+      document.querySelectorAll('.js-option').forEach((option) => {
+        if (option.hasAttribute('selected')) option.removeAttribute('selected');
+      });
+      if (h2.classList.contains('js-task-complete')) {
+        document.querySelector('.js-option-complete')
+          .setAttribute('selected', '');
+      } else if (h2.classList.contains('js-task-process')) {
+        document.querySelector('.js-option-process')
+          .setAttribute('selected', '');
+      } else {
+        document.querySelector('.js-option-wait')
+          .setAttribute('selected', '');
+      }
+      document.querySelector('.js-task-setup-description').value = decription;
     }
   );
 })()
